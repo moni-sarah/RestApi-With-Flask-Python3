@@ -10,25 +10,25 @@ products = [
 
 #
 #Add all the REST API end-points here
-# Example request - http://localhost:5000/products
+# Example request - http://localhost:3000/products
 @app.route('/products', methods=['GET'])
 def get_products():
     return jsonify(products)
 
-# Example request - http://localhost:5000/products/144 - with method GET
+# Example request - http://localhost:3000/products/144 - with method GET
 @app.route('/products/<id>', methods=['GET'])
 def get_product(id):
     id = int(id)
     product = [x for x in products if x["id"] == id][0]
     return jsonify(product)
 
-# Example request - http://localhost:5000/products - with method POST
+# Example request - http://localhost:3000/products - with method POST
 @app.route('/products', methods=['POST'])
 def add_product():
     products.append(request.get_json())
     return '', 201
 
-# Example request - http://localhost:5000/products/144 - with method PUT
+# Example request - http://localhost:3000/products/144 - with method PUT
 @app.route('/products/<id>', methods=['PUT'])
 def update_product(id):
     id = int(id)
@@ -38,7 +38,7 @@ def update_product(id):
         product[key] = value
     return '', 204
 
-# Example request - http://localhost:5000/products/144 - with method DELETE
+# Example request - http://localhost:3000/products/144 - with method DELETE
 @app.route('/products/<id>', methods=['DELETE'])
 def remove_product(id):
     id = int(id)
